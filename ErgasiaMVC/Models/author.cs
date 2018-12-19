@@ -11,7 +11,8 @@ namespace ErgasiaMVC.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class author
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,8 +21,11 @@ namespace ErgasiaMVC.Models
             this.titleauthors = new HashSet<titleauthor>();
         }
     
+        [Required]
         public string au_id { get; set; }
+        [Display(Name = "Last name")]
         public string au_lname { get; set; }
+        [Display(Name = "First name")]
         public string au_fname { get; set; }
         public string phone { get; set; }
         public string address { get; set; }
