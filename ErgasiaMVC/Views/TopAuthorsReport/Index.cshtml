@@ -1,0 +1,96 @@
+﻿@model IEnumerable<ErgasiaMVC.Models.author>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h2>Top Authors</h2>
+        <p>Search for authors who have atleast one book in top <i>N</i> bestseller books between a given time period.</p>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="" class="control-label col-md-2">Number of bestseller books to consider</label>
+                <input type="text" name="num" value="@Request.Form["num"]" class="form-control" />
+                @Html.ValidationMessage("num", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="" class="control-label col-md-2">Start date</label>
+                <input type="text" name="startDate" value="@Request.Form["startDate"]" class="form-control" />
+                @Html.ValidationMessage("startDate", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="" class="control-label col-md-2">End date</label>
+                <input type="text" name="endDate" value="@Request.Form["endDate"]" class="form-control" />
+                @Html.ValidationMessage("endDate", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+@{if (ViewBag.bestAuthors != null) {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.au_fname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.au_lname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.city)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.phone)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var a in (List<ErgasiaMVC.Models.author>)ViewBag.bestAuthors) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => a.au_fname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => a.au_lname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => a.city)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => a.address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => a.phone)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Authors", new { }, new { id = a.au_id })
+                </td>
+            </tr>
+            }
+        </table>
+    }
+}
