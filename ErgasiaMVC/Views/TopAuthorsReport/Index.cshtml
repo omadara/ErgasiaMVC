@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ErgasiaMVC.Models.author>
+﻿@model ErgasiaMVC.Models.TopAuthorsReportInput
 
 @{
     ViewBag.Title = "Index";
@@ -16,26 +16,26 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
+            @Html.LabelFor(model => Model.num, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <label for="" class="control-label col-md-2">Number of bestseller books to consider</label>
-                <input type="text" name="num" value="@Request.Form["num"]" class="form-control" />
-                @Html.ValidationMessage("num", new { @class = "text-danger" })
+                @Html.EditorFor(model => Model.num, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => Model.num, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => Model.startDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <label for="" class="control-label col-md-2">Start date</label>
-                <input type="text" name="startDate" value="@Request.Form["startDate"]" class="form-control" />
-                @Html.ValidationMessage("startDate", new { @class = "text-danger" })
+                @Html.EditorFor(model => Model.startDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => Model.startDate, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => Model.endDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <label for="" class="control-label col-md-2">End date</label>
-                <input type="text" name="endDate" value="@Request.Form["endDate"]" class="form-control" />
-                @Html.ValidationMessage("endDate", new { @class = "text-danger" })
+                @Html.EditorFor(model => Model.endDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => Model.endDate, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -49,48 +49,11 @@
 
 
 @{if (ViewBag.bestAuthors != null) {
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.au_fname)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.au_lname)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.city)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.address)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.phone)
-                </th>
-                <th></th>
-            </tr>
+        Html.RenderPartial("_TopAuthorsReportTable");
+  }
+}
 
-            @foreach (var a in (List<ErgasiaMVC.Models.author>)ViewBag.bestAuthors) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => a.au_fname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => a.au_lname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => a.city)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => a.address)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => a.phone)
-                </td>
-                <td>
-                    @Html.ActionLink("Details", "Details", "Authors", new { }, new { id = a.au_id })
-                </td>
-            </tr>
-            }
-        </table>
-    }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }

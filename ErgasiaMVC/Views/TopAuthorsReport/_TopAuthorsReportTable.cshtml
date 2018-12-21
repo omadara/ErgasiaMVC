@@ -1,0 +1,46 @@
+﻿@model ErgasiaMVC.Models.author
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.au_fname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.au_lname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phone)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var a in (List<ErgasiaMVC.Models.author>)ViewBag.bestAuthors)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => a.au_fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => a.au_lname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => a.city)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => a.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => a.phone)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Authors", new { id = a.au_id }, new { })
+            </td>
+        </tr>
+    }
+</table>
