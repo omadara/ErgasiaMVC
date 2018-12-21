@@ -1,0 +1,30 @@
+﻿@model ErgasiaMVC.Models.sale
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.store.stor_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.title.title1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ord_date)
+        </th>
+    </tr>
+
+    @foreach (var s in (List<ErgasiaMVC.Models.sale>)ViewBag.salesReportResult) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => s.store.stor_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => s.title.title1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => s.ord_date)
+        </td>
+    </tr>
+    }
+</table>
+

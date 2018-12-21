@@ -25,4 +25,23 @@ namespace ErgasiaMVC.Models
         [DataType(DataType.Date)]
         public DateTime endDate { get; set; }
     }
+
+    public class SalesReportInput
+    {
+        [DisplayName("Start date")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DataType(DataType.Date)]
+        public DateTime startDate { get; set; }
+
+        [DisplayName("End date")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DataType(DataType.Date)]
+        public DateTime endDate { get; set; }
+
+        [DisplayName("Store name start")]
+        public string storeNameStart { get; set; }
+
+        [DisplayName("Store name end")]
+        public string storeNameEnd { get; set; }
+    }
 }

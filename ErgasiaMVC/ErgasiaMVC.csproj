@@ -141,6 +141,7 @@
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\PublishersController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
+    <Compile Include="Controllers\SalesReportController.cs" />
     <Compile Include="Controllers\StoresController.cs" />
     <Compile Include="Controllers\TitlesController.cs" />
     <Compile Include="Controllers\TopAuthorsReportController.cs" />
@@ -293,6 +294,8 @@
     <Content Include="Views\Titles\Index.cshtml" />
     <Content Include="Views\TopAuthorsReport\Index.cshtml" />
     <Content Include="Views\TopAuthorsReport\_TopAuthorsReportTable.cshtml" />
+    <Content Include="Views\SalesReport\Index.cshtml" />
+    <Content Include="Views\SalesReport\_SalesReportTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

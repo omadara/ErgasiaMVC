@@ -22,11 +22,11 @@ namespace ErgasiaMVC.Controllers
         public ActionResult IndexPost([Bind(Include = "num,startDate,endDate")] TopAuthorsReportInput input)
         {
             if(ModelState.IsValid) {
-                var bestTitles = db.sales.GroupBy(s => s.title_id)
+                var bestTitles = db.sales.Where(s => s.ord_date >= input.startDate && s.ord_date <= input.endDate)
+                    .GroupBy(s => s.title_id)
                     .Select(g => new {
                         titleId = g.Key,
-                        totalSales = g.Where(s => s.ord_date >= input.startDate && s.ord_date <= input.endDate).Sum(s => s.qty)
-                    })
+                        totalSales = g.Sum(s => s.qty)})
                     .OrderByDescending(anon => anon.totalSales)
                     .Take(input.num);
                 ViewBag.bestAuthors = db.authors
@@ -37,6 +37,5 @@ namespace ErgasiaMVC.Controllers
             }
             return View();
         }
-
     }
 }
