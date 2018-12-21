@@ -22,7 +22,7 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            Tables<span class="caret"></span>
+                            Table<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Authors", "Index", "Authors")</li>
@@ -36,7 +36,7 @@
 
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            Reports<span class="caret"></span>
+                            Report<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Top Authors", "Index", "TopAuthorsReport")</li>
@@ -44,16 +44,7 @@
                         </ul>
                     </li>
 
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            Database<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Backup", "Index", "BackupDB")</li>
-                            <li>@Html.ActionLink("Restore", "Index", "RestoreDB")</li>
-                        </ul>
-                    </li>
-
+                    <li>@Html.ActionLink("Database", "Index", "Database")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>

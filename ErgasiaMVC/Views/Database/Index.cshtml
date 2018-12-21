@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Backup - Restore";
+}
+
+@if (ViewBag.message != null){
+    <div class="@ViewBag.cssClass">@ViewBag.message</div>
+}
+
+<h3>Backup database</h3>
+@Html.ActionLink("Download backup", "DownloadBackupFile", new { }, new { @class = "btn btn-default" })
+<hr />
+
+<h3>Restore database</h3>
+@using (Html.BeginForm("Restore", "Database", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        <label for="file">File </label>
+        <input type="file" name="file" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Upload" class="btn btn-default" />
+    </div>
+}
