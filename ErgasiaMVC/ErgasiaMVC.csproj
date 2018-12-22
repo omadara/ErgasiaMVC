@@ -140,6 +140,7 @@
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PublishersController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\SalesReportController.cs" />
@@ -298,6 +299,7 @@
     <Content Include="Views\SalesReport\Index.cshtml" />
     <Content Include="Views\SalesReport\_SalesReportTable.cshtml" />
     <Content Include="Views\Database\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

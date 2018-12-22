@@ -13,10 +13,14 @@ namespace ErgasiaMVC.Controllers
     public class DatabaseController : Controller
     {
         public ActionResult Index() {
+            if (LoginController.shouldRedirectToLogin(this))
+                return RedirectToAction("Index", "Login");
             return View();
         }
 
         public ActionResult DownloadBackupFile() {
+            if (LoginController.shouldRedirectToLogin(this))
+                return RedirectToAction("Index", "Login");
             string backup_dir = Path.Combine(Path.GetTempPath(), "mvc_ergasia_db");
             string backup_file = "pubs-" + DateTime.Now.ToString("yyyy-MM-dd_HHmmss") + ".Bak";
 
@@ -37,6 +41,8 @@ namespace ErgasiaMVC.Controllers
 
         [HttpPost]
         public ActionResult Restore(HttpPostedFileBase file) {
+            if (LoginController.shouldRedirectToLogin(this))
+                return RedirectToAction("Index", "Login");
             if (file != null && file.ContentLength > 0) {
                 var fileName = Path.GetFileName(file.FileName);
                 var path = Path.Combine(Path.GetTempPath(), fileName);
