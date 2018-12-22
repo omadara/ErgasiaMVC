@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<ErgasiaMVC.Models.sale>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Sales";
 }
 
-<h2>Index</h2>
+<h2>All Sales</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -47,9 +47,9 @@
             @Html.DisplayFor(modelItem => item.title.title1)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { store_id = item.stor_id, ord_num = item.ord_num, title_id = item.title_id }) |
+            @Html.ActionLink("Details", "Details", new { store_id = item.stor_id, ord_num = item.ord_num, title_id = item.title_id }) |
+            @Html.ActionLink("Delete", "Delete", new { store_id = item.stor_id, ord_num = item.ord_num, title_id = item.title_id })
         </td>
     </tr>
 }

@@ -300,6 +300,7 @@
     <Content Include="Views\SalesReport\_SalesReportTable.cshtml" />
     <Content Include="Views\Database\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Stores\_StoreSalesTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

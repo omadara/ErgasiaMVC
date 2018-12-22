@@ -12,6 +12,7 @@ namespace ErgasiaMVC.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class store
     {
@@ -21,14 +22,19 @@ namespace ErgasiaMVC.Models
             this.sales = new HashSet<sale>();
             this.discounts = new HashSet<discount>();
         }
-    
+
+        [Required, Display(Name = "ID")]
         public string stor_id { get; set; }
-        [DisplayName("Store name")]
+        [Required, DisplayName("Store"), MaxLength(40)]
         public string stor_name { get; set; }
-        [DisplayName("Address")]
+        [Required, DisplayName("Address"), MaxLength(40)]
         public string stor_address { get; set; }
+        [Required, DisplayName("City"), MaxLength(20)]
         public string city { get; set; }
+        [Required, DisplayName("State"), MaxLength(2)]
         public string state { get; set; }
+        [Required, DisplayName("ZIP")]
+        [RegularExpression(@"\d{5}", ErrorMessage = "ZIP must be a 5-digit number")]
         public string zip { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

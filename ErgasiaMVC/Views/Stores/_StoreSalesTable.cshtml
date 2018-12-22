@@ -1,0 +1,16 @@
+﻿@model IEnumerable<ErgasiaMVC.Models.sale>
+
+<table class="table table-bordered">
+    <tr>
+        <th>@Html.DisplayNameFor(m => m.ord_date)</th>
+        <th>@Html.DisplayNameFor(m => m.title.title1)</th>
+        <th></th>
+    </tr>
+    @foreach (var sale in Model) {
+    <tr>
+        <td>@Html.DisplayFor(m => sale.ord_date)</td>
+        <td>@Html.DisplayFor(m => sale.title.title1)</td>
+        <td>@Html.ActionLink("Details", "Details", "Sales", new { store_id = sale.stor_id, ord_num = sale.ord_num, title_id = sale.title_id }, new { })</td>
+    </tr>
+    }
+</table>

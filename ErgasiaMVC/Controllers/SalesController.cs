@@ -22,15 +22,12 @@ namespace ErgasiaMVC.Controllers
         }
 
         // GET: Sales/Details/5
-        public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
+        public ActionResult Details(string store_id, string ord_num, string title_id) {
+            if (store_id == null || ord_num == null || title_id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            sale sale = db.sales.Find(id);
-            if (sale == null)
-            {
+            sale sale = db.sales.Find(store_id, ord_num, title_id);
+            if (sale == null) {
                 return HttpNotFound();
             }
             return View(sale);
@@ -64,13 +61,11 @@ namespace ErgasiaMVC.Controllers
         }
 
         // GET: Sales/Edit/5
-        public ActionResult Edit(string id)
-        {
-            if (id == null)
-            {
+        public ActionResult Edit(string store_id, string ord_num, string title_id) {
+            if (store_id == null || ord_num == null || title_id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            sale sale = db.sales.Find(id);
+            sale sale = db.sales.Find(store_id, ord_num, title_id);
             if (sale == null)
             {
                 return HttpNotFound();
@@ -99,13 +94,11 @@ namespace ErgasiaMVC.Controllers
         }
 
         // GET: Sales/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
+        public ActionResult Delete(string store_id, string ord_num, string title_id) {
+            if (store_id == null || ord_num == null || title_id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            sale sale = db.sales.Find(id);
+            sale sale = db.sales.Find(store_id, ord_num, title_id);
             if (sale == null)
             {
                 return HttpNotFound();
@@ -116,9 +109,8 @@ namespace ErgasiaMVC.Controllers
         // POST: Sales/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            sale sale = db.sales.Find(id);
+        public ActionResult DeleteConfirmed(string store_id, string ord_num, string title_id) {
+            sale sale = db.sales.Find(store_id, ord_num, title_id);
             db.sales.Remove(sale);
             db.SaveChanges();
             return RedirectToAction("Index");
