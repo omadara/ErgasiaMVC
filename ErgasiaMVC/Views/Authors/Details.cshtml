@@ -7,9 +7,16 @@
 <h2>Details</h2>
 
 <div>
-    <h4>author</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.au_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.au_id)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.au_lname)
         </dt>
@@ -76,6 +83,15 @@
 
     </dl>
 </div>
+
+@*<h4>Titles</h4>*@
+<table class="table table-bordered">
+    <tr><th>Titles</th></tr>
+    @foreach (var ta in Model.titleauthors) {
+        <tr><td>@Html.ActionLink(ta.title.title1, "Details", "Titles", new { id = ta.title_id }, new { })</td></tr>
+    }
+</table>
+<hr/>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.au_id }) |
     @Html.ActionLink("Back to List", "Index")

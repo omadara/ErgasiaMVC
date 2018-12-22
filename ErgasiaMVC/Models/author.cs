@@ -21,17 +21,25 @@ namespace ErgasiaMVC.Models
             this.titleauthors = new HashSet<titleauthor>();
         }
     
-        [Required]
+        [Required, Display(Name = "ID")]
+        [RegularExpression(@"\d{3}-\d{2}-\d{4}", ErrorMessage = "ID must be in the form 'ddd-dd-dddd', where d is a digit")]
         public string au_id { get; set; }
-        [Display(Name = "Last name")]
+        [Required, Display(Name = "Last name")]
         public string au_lname { get; set; }
-        [Display(Name = "First name")]
+        [Required, Display(Name = "First name")]
         public string au_fname { get; set; }
+        [Required, Display(Name = "Phone"), MaxLength(12)]
         public string phone { get; set; }
+        [Required, Display(Name = "Address"), MaxLength(40)]
         public string address { get; set; }
+        [Required, Display(Name = "City"), MaxLength(20)]
         public string city { get; set; }
+        [Required, Display(Name = "State"), MaxLength(2)]
         public string state { get; set; }
+        [Required, Display(Name = "ZIP")]
+        [RegularExpression(@"\d{5}", ErrorMessage = "ZIP must be a 5-digit number")]
         public string zip { get; set; }
+        [Required, Display(Name = "Contract")]
         public bool contract { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -17,6 +17,7 @@ namespace ErgasiaMVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult LoginPost(string username, string password) {
             if (username == "admin" && password == "pass") {
                 Session["is_admin"] = true;
