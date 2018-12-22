@@ -11,7 +11,9 @@ namespace ErgasiaMVC.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class title
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,20 +24,26 @@ namespace ErgasiaMVC.Models
         }
     
         public string title_id { get; set; }
+        [DisplayName("Title")]
         public string title1 { get; set; }
         public string type { get; set; }
+        [DisplayName("Publisher")]
         public string pub_id { get; set; }
         public Nullable<decimal> price { get; set; }
         public Nullable<decimal> advance { get; set; }
         public Nullable<int> royalty { get; set; }
         public Nullable<int> ytd_sales { get; set; }
         public string notes { get; set; }
+        [DisplayName("Published on day")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DataType(DataType.Date)]
         public System.DateTime pubdate { get; set; }
     
         public virtual publisher publisher { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<sale> sales { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [DisplayName("Authors")]
         public virtual ICollection<titleauthor> titleauthors { get; set; }
         public virtual roysched roysched { get; set; }
     }

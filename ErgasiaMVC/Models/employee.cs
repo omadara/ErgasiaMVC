@@ -11,16 +11,25 @@ namespace ErgasiaMVC.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class employee
     {
         public string emp_id { get; set; }
+        [DisplayName("First name")]
         public string fname { get; set; }
         public string minit { get; set; }
+        [DisplayName("Last name")]
         public string lname { get; set; }
+        [DisplayName("Job")]
         public short job_id { get; set; }
         public Nullable<byte> job_lvl { get; set; }
+        [DisplayName("Publisher")]
         public string pub_id { get; set; }
+        [DisplayName("Hired on day")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DataType(DataType.Date)]
         public System.DateTime hire_date { get; set; }
     
         public virtual job job { get; set; }

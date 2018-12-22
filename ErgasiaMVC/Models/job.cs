@@ -11,7 +11,8 @@ namespace ErgasiaMVC.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class job
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,8 +20,10 @@ namespace ErgasiaMVC.Models
         {
             this.employees = new HashSet<employee>();
         }
-    
+
+        [DisplayName("Job")]
         public short job_id { get; set; }
+        [DisplayName("Job description")]
         public string job_desc { get; set; }
         public byte min_lvl { get; set; }
         public byte max_lvl { get; set; }

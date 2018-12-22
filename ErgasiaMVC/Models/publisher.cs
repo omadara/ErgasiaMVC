@@ -11,7 +11,8 @@ namespace ErgasiaMVC.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class publisher
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,8 +21,10 @@ namespace ErgasiaMVC.Models
             this.employees = new HashSet<employee>();
             this.titles = new HashSet<title>();
         }
-    
+
+        [DisplayName("Publisher")]
         public string pub_id { get; set; }
+        [DisplayName("Publisher")]
         public string pub_name { get; set; }
         public string city { get; set; }
         public string state { get; set; }
@@ -29,6 +32,7 @@ namespace ErgasiaMVC.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<employee> employees { get; set; }
+        [DisplayName("Info")]
         public virtual pub_info pub_info { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<title> titles { get; set; }

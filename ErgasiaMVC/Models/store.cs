@@ -11,7 +11,8 @@ namespace ErgasiaMVC.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class store
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,7 +23,9 @@ namespace ErgasiaMVC.Models
         }
     
         public string stor_id { get; set; }
+        [DisplayName("Store name")]
         public string stor_name { get; set; }
+        [DisplayName("Address")]
         public string stor_address { get; set; }
         public string city { get; set; }
         public string state { get; set; }

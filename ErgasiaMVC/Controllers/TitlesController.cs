@@ -17,7 +17,7 @@ namespace ErgasiaMVC.Controllers
         // GET: Titles
         public ActionResult Index()
         {
-            var titles = db.titles.Include(t => t.publisher).Include(t => t.roysched);
+            var titles = db.titles.Include(t => t.publisher).Include(t => t.roysched).Include(t=>t.titleauthors);
             return View(titles.ToList());
         }
 

@@ -41,6 +41,9 @@
         <th>
             @Html.DisplayNameFor(model => model.roysched.title_id)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.titleauthors)
+        </th>
         <th></th>
     </tr>
 
@@ -77,9 +80,16 @@
             @Html.DisplayFor(modelItem => item.roysched.title_id)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.title_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.title_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.title_id })
+            @foreach (var author in item.titleauthors)
+            {
+                @Html.ActionLink(author.author.au_fname+" "+author.author.au_lname,"../Authors/Details",new { id = author.au_id})
+                <br/>
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.title_id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.title_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.title_id })
         </td>
     </tr>
 }

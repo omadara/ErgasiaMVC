@@ -11,11 +11,13 @@ namespace ErgasiaMVC.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class pub_info
     {
         public string pub_id { get; set; }
         public byte[] logo { get; set; }
+        [DisplayName("Info")]
         public string pr_info { get; set; }
     
         public virtual publisher publisher { get; set; }

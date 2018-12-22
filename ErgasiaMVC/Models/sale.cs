@@ -14,6 +14,7 @@ namespace ErgasiaMVC.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date)]
         public System.DateTime ord_date { get; set; }
+        [DisplayName("Quantity")]
         public short qty { get; set; }
         public string payterms { get; set; }
         public string title_id { get; set; }
