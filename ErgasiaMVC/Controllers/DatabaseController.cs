@@ -14,7 +14,7 @@ namespace ErgasiaMVC.Controllers
     {
         public ActionResult Index() {
             if (LoginController.shouldRedirectToLogin(this))
-                return RedirectToAction("Index", "Login");
+                return Redirect("Login/" + Request.Url.Query);
             return View();
         }
 

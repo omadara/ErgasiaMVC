@@ -49,7 +49,7 @@
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Database", "Index", "Login", new { modal = true }, new { data_target = "#modal-container", data_toggle = "modal" })</li>
+                        <li>@Html.ActionLink("Database", "Index", "Database", new { modal = true }, new { data_target = "#modal-container", data_toggle = "modal" })</li>
                     }
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
@@ -89,7 +89,7 @@
     @if (Request["Login_Error"] != null)
     {
         <script type="text/javascript">
-            $('#modal-container').modal({ remote: 'Login?modal=true&Login_Error=true' });
+            $('#modal-container').modal({ remote: 'Database?modal=true&Login_Error=true' });
             $('#modal-container').modal('show');
         </script>
     }
