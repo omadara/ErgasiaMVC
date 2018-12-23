@@ -12,6 +12,7 @@ namespace ErgasiaMVC.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class publisher
     {
@@ -22,12 +23,16 @@ namespace ErgasiaMVC.Models
             this.titles = new HashSet<title>();
         }
 
-        [DisplayName("Publisher")]
+        [Required, DisplayName("ID")]
+        [RegularExpression(@"99[0-9][0-9]", ErrorMessage = "ID must be in the form '99[0-9][0-9]'")]
         public string pub_id { get; set; }
-        [DisplayName("Publisher")]
+        [DisplayName("Publisher"), MaxLength(40)]
         public string pub_name { get; set; }
+        [DisplayName("City"), MaxLength(20)]
         public string city { get; set; }
+        [DisplayName("State"), MaxLength(2)]
         public string state { get; set; }
+        [DisplayName("Country"), MaxLength(30)]
         public string country { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

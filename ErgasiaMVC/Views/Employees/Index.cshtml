@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<ErgasiaMVC.Models.employee>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Employees";
 }
 
-<h2>Index</h2>
+<h2>Employees</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -56,7 +56,7 @@
             @Html.DisplayFor(modelItem => item.job.job_desc)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.publisher.pub_name)
+            @Html.ActionLink(item.publisher.pub_name, "Details", "Publishers", new { id = item.pub_id }, new { })
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.emp_id }) |

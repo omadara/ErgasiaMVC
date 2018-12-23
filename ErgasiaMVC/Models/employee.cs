@@ -16,14 +16,18 @@ namespace ErgasiaMVC.Models
 
     public partial class employee
     {
+        [Required, Display(Name = "ID")]
+        [RegularExpression(@"([A-Z]{3}|[A-Z]-[A-Z])[1-9][0-9]{4}[FM]", ErrorMessage = "ID must be in the form '[A-Z][A-Z][A-Z][1-9][0-9][0-9][0-9][0-9][FM]' or '[A-Z]-[A-Z][1-9][0-9][0-9][0-9][0-9][FM]'")]
         public string emp_id { get; set; }
-        [DisplayName("First name")]
+        [Required, DisplayName("First name"), MaxLength(20)]
         public string fname { get; set; }
+        [DisplayName("Middle name"), MaxLength(1)]
         public string minit { get; set; }
-        [DisplayName("Last name")]
+        [Required, DisplayName("Last name"), MaxLength(30)]
         public string lname { get; set; }
         [DisplayName("Job")]
         public short job_id { get; set; }
+        [DisplayName("Job level")]
         public Nullable<byte> job_lvl { get; set; }
         [DisplayName("Publisher")]
         public string pub_id { get; set; }

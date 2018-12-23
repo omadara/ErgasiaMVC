@@ -1,0 +1,16 @@
+﻿@model IEnumerable<ErgasiaMVC.Models.title>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>@Html.DisplayNameFor(m => m.pubdate)</th>
+        <th>@Html.DisplayNameFor(m => m.title1)</th>
+        <th></th>
+    </tr>
+    @foreach(var title in Model) {
+    <tr>
+        <td>@Html.DisplayFor(m => title.pubdate)</td>
+        <td>@Html.DisplayFor(m => title.title1)</td>
+        <td>@Html.ActionLink("Details", "Details", "Titles", new { id = title.title_id}, new { })</td>
+    </tr>
+    }
+</table>

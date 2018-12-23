@@ -1,15 +1,23 @@
 ﻿@model ErgasiaMVC.Models.publisher
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Publisher Details";
 }
 
-<h2>Details</h2>
+<h2>Publisher</h2>
 
 <div>
     <h4>publisher</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pub_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pub_id)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.pub_name)
         </dt>
@@ -52,6 +60,10 @@
 
     </dl>
 </div>
+
+<h3>Published Titles</h3>
+@{Html.RenderPartial("_PublishedTitlesTable", Model.titles);}
+<hr />
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.pub_id }) |
     @Html.ActionLink("Back to List", "Index")
