@@ -5,6 +5,11 @@
 
 <h2>Admin login</h2>
 
+@if (Request["Login_Error"] != null)
+{
+    <div> Wrong Username or Pass </div>
+}
+
 @using (Html.BeginForm("LoginPost", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()

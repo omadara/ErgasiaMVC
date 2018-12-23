@@ -24,8 +24,13 @@ namespace ErgasiaMVC.Controllers
                 RouteValueDictionary redirectUrl = (RouteValueDictionary)Session["redirect_url"];
                 if(redirectUrl!=null) return RedirectToAction(redirectUrl["action"].ToString(), redirectUrl["controller"].ToString());
                 else return RedirectToAction("Index", "Home");
+            } else {
+                var uriBuilder = new UriBuilder(Request.UrlReferrer);
+                var q = HttpUtility.ParseQueryString(uriBuilder.Query);
+                q["Login_Error"] = "true";
+                uriBuilder.Query = q.ToString();
+                return Redirect(uriBuilder.ToString());
             }
-            return View("Index");
         }
 
         public static bool shouldRedirectToLogin(Controller c) {
