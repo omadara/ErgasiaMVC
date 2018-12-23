@@ -59,9 +59,9 @@
             @Html.ActionLink(item.publisher.pub_name, "Details", "Publishers", new { id = item.pub_id }, new { })
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.emp_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.emp_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.emp_id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.emp_id, modal = true }, new { data_target = "#modal-container", data_toggle = "modal" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.emp_id, modal = true }, new { data_target = "#modal-container", data_toggle = "modal" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.emp_id, modal = true }, new { data_target = "#modal-container", data_toggle = "modal" })
         </td>
     </tr>
 }

@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<ErgasiaMVC.Models.job>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Jobs";
 }
 
-<h2>Index</h2>
+<h2>Jobs</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.max_lvl)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.job_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.job_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.job_id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.job_id, modal = true }, new { data_target = "#modal-container", data_toggle = "modal" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.job_id, modal = true }, new { data_target = "#modal-container", data_toggle = "modal" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.job_id, modal = true }, new { data_target = "#modal-container", data_toggle = "modal" })
         </td>
     </tr>
 }

@@ -12,6 +12,7 @@ namespace ErgasiaMVC.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class job
     {
@@ -23,9 +24,11 @@ namespace ErgasiaMVC.Models
 
         [DisplayName("Job")]
         public short job_id { get; set; }
-        [DisplayName("Job description")]
+        [DisplayName("Description"), MaxLength(50)]
         public string job_desc { get; set; }
+        [Required, DisplayName("Minimum Lv"), Range(10, 250)]
         public byte min_lvl { get; set; }
+        [Required, DisplayName("Maximum Lv"), Range(10, 250)]
         public byte max_lvl { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

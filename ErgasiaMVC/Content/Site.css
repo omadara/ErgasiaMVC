@@ -114,3 +114,10 @@ hr {
     background-color: #a07235;
     border-color: #6f6f6f;
 }
+
+/* ======== MODAL ======== */
+.modal-content {
+    padding: 10px;
+    background: rgb(229, 228, 198);
+}
+

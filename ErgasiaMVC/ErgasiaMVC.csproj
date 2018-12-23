@@ -136,7 +136,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthorsController.cs" />
     <Compile Include="Controllers\DatabaseController.cs" />
-    <Compile Include="Controllers\DiscountsController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
@@ -259,11 +258,6 @@
     <Content Include="Views\Authors\Details.cshtml" />
     <Content Include="Views\Authors\Edit.cshtml" />
     <Content Include="Views\Authors\Index.cshtml" />
-    <Content Include="Views\Discounts\Create.cshtml" />
-    <Content Include="Views\Discounts\Delete.cshtml" />
-    <Content Include="Views\Discounts\Details.cshtml" />
-    <Content Include="Views\Discounts\Edit.cshtml" />
-    <Content Include="Views\Discounts\Index.cshtml" />
     <Content Include="Views\Employees\Create.cshtml" />
     <Content Include="Views\Employees\Delete.cshtml" />
     <Content Include="Views\Employees\Details.cshtml" />

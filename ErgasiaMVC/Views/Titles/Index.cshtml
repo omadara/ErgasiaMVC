@@ -87,9 +87,9 @@
             }
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.title_id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.title_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.title_id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.title_id, modal = true }, new { data_target = "#modal-container", data_toggle = "modal" }) |
+            @Html.ActionLink("Details", "Details", new { id = item.title_id, modal = true }, new { data_target = "#modal-container", data_toggle = "modal" }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.title_id, modal = true }, new { data_target = "#modal-container", data_toggle = "modal" })
         </td>
     </tr>
 }
