@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background: rgb(229, 228, 198);
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +22,95 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.jumbotron {
+    background-color: #ffe1ac;
+}
+
+hr {
+    border-color: #a48761;
+}
+
+/*========== TABLE ==============*/
+.table-bordered > tbody > tr > th,
+.table-bordered > tbody > tr > td {
+    border: 1px solid #4e4e4e;
+}
+
+.table-bordered > tbody > tr > th {
+    background-color: #c6b196;
+}
+
+.table-bordered > tbody > tr > td {
+    background-color: #efefef;
+}
+
+.table-hover > tbody > tr:hover > td {
+    background-color: #f1dab6;
+}
+
+
+/*========== NAVBAR ==============*/
+.navbar-custom {
+    background-color: #583d19;
+    color: #33aa33;
+    border-radius: 0px;
+}
+
+.navbar-custom .navbar-nav > li > a {
+    color: #d8d8d8;
+}
+
+.navbar-custom .navbar-nav > .active > a {
+    color: #ffffff;
+    background-color: transparent;
+}
+
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > li > a:focus,
+.navbar-custom .navbar-nav > .active > a:hover,
+.navbar-custom .navbar-nav > .active > a:focus,
+.navbar-custom .navbar-nav > .open > a {
+    text-decoration: none;
+    background-color: #714e1f;
+}
+
+.navbar-custom .navbar-brand {
+    color: #d8d8d8;
+}
+
+.navbar-custom .navbar-toggle {
+    background-color: #6f4c1e;
+}
+
+.navbar-custom .icon-bar {
+    background-color: #d8d8d8;
+}
+
+ /* ====== NAVBAR DROPDOWNS ======= */ 
+.navbar-custom .navbar-nav .dropdown-menu {
+    background-color: #583d19;
+}
+
+.navbar-custom .navbar-nav .dropdown-menu li a {
+    color: #d8d8d8;
+}
+
+.navbar-custom .navbar-nav .dropdown-menu > li > a:hover,
+.navbar-custom .navbar-nav .dropdown-menu > li > a:focus {
+    background-color: #714e1f;
+}
+
+/* ======== BUTTONS ======= */
+.btn-default {
+    color: #e8e8e8;
+    background-color: #80551d;
+    border-color: #4e4e4e;
+}
+
+.btn-default:hover, .btn-default:focus {
+    color: #e8e8e8;
+    background-color: #a07235;
+    border-color: #6f6f6f;
 }

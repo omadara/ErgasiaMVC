@@ -84,7 +84,7 @@
     </dl>
 </div>
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
     <tr><th>Titles</th></tr>
     @foreach (var ta in Model.titleauthors) {
         <tr><td>@Html.ActionLink(ta.title.title1, "Details", "Titles", new { id = ta.title_id }, new { })</td></tr>
