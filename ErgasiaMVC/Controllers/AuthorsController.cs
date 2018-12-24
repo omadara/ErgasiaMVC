@@ -116,8 +116,9 @@ namespace ErgasiaMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id) {
             author author = db.authors.Find(id);
-            foreach (var ta in db.titleauthors.Where(ta => ta.au_id == author.au_id).ToList())
-                db.titleauthors.Remove(ta);
+            //foreach (var ta in db.titleauthors.Where(ta => ta.au_id == author.au_id).ToList())
+            //    db.titleauthors.Remove(ta);
+            db.titleauthors.RemoveRange(author.titleauthors);
             db.authors.Remove(author);
             db.SaveChanges();
             TempData["message_css"] = "alert alert-info";

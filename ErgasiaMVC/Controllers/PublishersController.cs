@@ -122,6 +122,16 @@ namespace ErgasiaMVC.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             publisher publisher = db.publishers.Find(id);
+            db.pub_info.Remove(publisher.pub_info);
+            foreach (var title in publisher.titles)
+            {
+                db.Database.ExecuteSqlCommand("DELETE FROM roysched WHERE title_id = @p0", title.title_id);
+                db.sales.RemoveRange(title.sales);
+                db.titleauthors.RemoveRange(title.titleauthors);
+
+            }
+            db.titles.RemoveRange(publisher.titles);
+            db.employees.RemoveRange(publisher.employees);
             db.publishers.Remove(publisher);
             db.SaveChanges();
             TempData["message_css"] = "alert alert-info";

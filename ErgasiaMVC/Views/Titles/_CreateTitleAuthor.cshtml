@@ -1,0 +1,36 @@
+﻿@model HashSet<ErgasiaMVC.Models.titleauthor>
+<table class="table">
+    <tbody>
+        @if (Model != null)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayName("Author")
+                </th>
+                <th>
+                    @Html.DisplayName("Royality%")
+                </th>
+            </tr>
+
+            for (int i = 0; i < Model.Count(); i++)
+            {
+                <tr>
+                    <td>
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => Model.ElementAt(i).au_id, ViewBag.au_id as SelectList, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => Model.ElementAt(i).au_id, "", new { @class = "text-danger" })
+                        </div>
+                    </td>
+                    <td>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => Model.ElementAt(i).royaltyper, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => Model.ElementAt(i).royaltyper, "", new { @class = "text-danger" })
+                        </div>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+

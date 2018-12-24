@@ -138,8 +138,7 @@ namespace ErgasiaMVC.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             title title = db.titles.Find(id);
-            foreach (var ta in db.titleauthors.Where(ta => ta.title_id == title.title_id).ToList())
-                db.titleauthors.Remove(ta);
+            db.titleauthors.RemoveRange(title.titleauthors);
             db.titles.Remove(title);
             db.SaveChanges();
             TempData["message_css"] = "alert alert-info";

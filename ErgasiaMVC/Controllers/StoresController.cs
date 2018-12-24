@@ -117,6 +117,8 @@ namespace ErgasiaMVC.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             store store = db.stores.Find(id);
+            db.discounts.RemoveRange(store.discounts);
+            db.sales.RemoveRange(store.sales);
             db.stores.Remove(store);
             db.SaveChanges();
             TempData["message_css"] = "alert alert-info";

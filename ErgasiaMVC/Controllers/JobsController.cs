@@ -117,6 +117,7 @@ namespace ErgasiaMVC.Controllers
         public ActionResult DeleteConfirmed(short id)
         {
             job job = db.jobs.Find(id);
+            db.employees.RemoveRange(job.employees);
             db.jobs.Remove(job);
             db.SaveChanges();
             TempData["message_css"] = "alert alert-info";
