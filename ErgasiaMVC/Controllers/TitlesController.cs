@@ -138,6 +138,8 @@ namespace ErgasiaMVC.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             title title = db.titles.Find(id);
+            db.Database.ExecuteSqlCommand("DELETE FROM roysched WHERE title_id = @p0", title.title_id);
+            db.sales.RemoveRange(title.sales);
             db.titleauthors.RemoveRange(title.titleauthors);
             db.titles.Remove(title);
             db.SaveChanges();
