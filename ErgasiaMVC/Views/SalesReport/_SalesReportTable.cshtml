@@ -16,10 +16,10 @@
     @foreach (var s in (List<ErgasiaMVC.Models.sale>)ViewBag.salesReportResult) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => s.store.stor_name)
+            @Html.ActionLink(s.store.stor_name, "Details", "Stores", new { id = s.stor_id, modal = true }, new { data_target = "#modal-container", data_toggle = "modal" })
         </td>
         <td>
-            @Html.DisplayFor(modelItem => s.title.title1)
+            @Html.ActionLink(s.title.title1, "Details", "Titles", new { id = s.title_id, modal = true }, new { data_target = "#modal-container", data_toggle = "modal" })
         </td>
         <td>
             @Html.DisplayFor(modelItem => s.ord_date)

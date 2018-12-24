@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -40,7 +41,7 @@ namespace ErgasiaMVC.Controllers
         public ActionResult Create()
         {
             ViewBag.pub_id = new SelectList(db.publishers, "pub_id", "pub_name");
-            ViewBag.title_id = new SelectList(db.royscheds, "title_id", "title_id");
+            ViewBag.author_ids = new MultiSelectList(db.authors.Select(a => new { id = a.au_id, au_fulname = a.au_lname + " " + a.au_fname}), "id", "au_fulname");
             return View();
         }
 
@@ -49,17 +50,21 @@ namespace ErgasiaMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "title_id,title1,type,pub_id,price,advance,royalty,ytd_sales,notes,pubdate")] title title)
-        {
-            if (ModelState.IsValid)
-            {
+        public ActionResult Create([Bind(Include = "title_id,title1,type,pub_id,price,advance,royalty,ytd_sales,notes,pubdate")] title title, string[] author_ids) {
+            if (ModelState.IsValid) {
+                foreach(var aid in author_ids) {
+                    titleauthor ta = new titleauthor();
+                    ta.au_id = aid;
+                    ta.title_id = title.title_id;
+                    db.titleauthors.Add(ta);
+                }
                 db.titles.Add(title);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             ViewBag.pub_id = new SelectList(db.publishers, "pub_id", "pub_name", title.pub_id);
-            ViewBag.title_id = new SelectList(db.royscheds, "title_id", "title_id", title.title_id);
+            ViewBag.author_ids = new MultiSelectList(db.authors.Select(a => new { id = a.au_id, au_fulname = a.au_lname + " " + a.au_fname }), "id", "au_fulname");
             return View(title);
         }
 
@@ -76,7 +81,7 @@ namespace ErgasiaMVC.Controllers
                 return HttpNotFound();
             }
             ViewBag.pub_id = new SelectList(db.publishers, "pub_id", "pub_name", title.pub_id);
-            ViewBag.title_id = new SelectList(db.royscheds, "title_id", "title_id", title.title_id);
+            ViewBag.author_ids = new MultiSelectList(db.authors.Select(a => new { id = a.au_id, au_fulname = a.au_lname + " " + a.au_fname }), "id", "au_fulname");
             return View(title);
         }
 
@@ -85,16 +90,22 @@ namespace ErgasiaMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "title_id,title1,type,pub_id,price,advance,royalty,ytd_sales,notes,pubdate")] title title)
-        {
-            if (ModelState.IsValid)
-            {
+        public ActionResult Edit([Bind(Include = "title_id,title1,type,pub_id,price,advance,royalty,ytd_sales,notes,pubdate")] title title, string[] author_ids) {
+            if (ModelState.IsValid) {
+                foreach(var ta in db.titleauthors.Where(ta => ta.title_id == title.title_id).ToList())
+                    db.titleauthors.Remove(ta);
+                foreach (var aid in author_ids) {
+                    titleauthor ta = new titleauthor();
+                    ta.au_id = aid;
+                    ta.title_id = title.title_id;
+                    db.titleauthors.Add(ta);
+                }
                 db.Entry(title).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.pub_id = new SelectList(db.publishers, "pub_id", "pub_name", title.pub_id);
-            ViewBag.title_id = new SelectList(db.royscheds, "title_id", "title_id", title.title_id);
+            ViewBag.author_ids = new MultiSelectList(db.authors.Select(a => new { id = a.au_id, au_fulname = a.au_lname + " " + a.au_fname }), "id", "au_fulname");
             return View(title);
         }
 

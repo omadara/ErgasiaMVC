@@ -22,19 +22,26 @@ namespace ErgasiaMVC.Models
             this.sales = new HashSet<sale>();
             this.titleauthors = new HashSet<titleauthor>();
         }
-    
+
+        [Required, Display(Name = "ID")]
         public string title_id { get; set; }
-        [DisplayName("Title")]
+        [Required, DisplayName("Title"), MaxLength(80)]
         public string title1 { get; set; }
+        [DisplayName("Type"), MaxLength(12)]
         public string type { get; set; }
-        [DisplayName("Publisher")]
+        [Required, DisplayName("Publisher"), MaxLength(4)]
         public string pub_id { get; set; }
+        [DisplayName("Price"), DataType(DataType.Currency)]
         public Nullable<decimal> price { get; set; }
+        [DisplayName("Advance"), DataType(DataType.Currency)]
         public Nullable<decimal> advance { get; set; }
+        [DisplayName("Royalty")]
         public Nullable<int> royalty { get; set; }
+        [DisplayName("YTD sales")]
         public Nullable<int> ytd_sales { get; set; }
+        [DisplayName("Notes"), MaxLength(200)]
         public string notes { get; set; }
-        [DisplayName("Published on day")]
+        [DisplayName("Publish day")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date)]
         public System.DateTime pubdate { get; set; }

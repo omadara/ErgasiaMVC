@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<ErgasiaMVC.Models.title>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Titles";
 }
 
-<h2>Index</h2>
+<h2>Titles</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,25 +12,7 @@
 <table class="table table-bordered table-hover">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.title1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.advance)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.royalty)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ytd_sales)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.notes)
+            @Html.DisplayNameFor(model => model.title_id)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.pubdate)
@@ -39,10 +21,10 @@
             @Html.DisplayNameFor(model => model.publisher.pub_name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.roysched.title_id)
+            @Html.DisplayNameFor(model => model.titleauthors)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.titleauthors)
+            @Html.DisplayNameFor(model => model.title1)
         </th>
         <th></th>
     </tr>
@@ -50,41 +32,22 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.title1)
+            @Html.DisplayFor(model => item.title_id)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.type)
+            @Html.DisplayFor(model => item.pubdate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.price)
+            @Html.ActionLink(item.publisher.pub_name, "Details", "Publishers", new { id = item.pub_id, modal = true }, new { data_target = "#modal-container", data_toggle = "modal" })
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.advance)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.royalty)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ytd_sales)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.notes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.pubdate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.publisher.pub_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.roysched.title_id)
-        </td>
-        <td>
-            @foreach (var author in item.titleauthors)
-            {
-                @Html.ActionLink(author.author.au_fname+" "+author.author.au_lname,"../Authors/Details",new { id = author.au_id})
-                <br/>
+            @foreach (var author in item.titleauthors) {
+                @Html.ActionLink(author.author.au_lname + " " + author.author.au_fname, "Details", "Authors", new { id = author.au_id, modal = true }, new { data_target = "#modal-container", data_toggle = "modal" })
+                <br />
             }
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.title1)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.title_id, modal = true }, new { data_target = "#modal-container", data_toggle = "modal" }) |

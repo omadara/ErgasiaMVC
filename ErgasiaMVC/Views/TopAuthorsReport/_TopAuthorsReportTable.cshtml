@@ -39,7 +39,7 @@
                 @Html.DisplayFor(modelItem => a.phone)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", "Authors", new { id = a.au_id }, new { })
+                @Html.ActionLink("Details", "Details", "Authors", new { id = a.au_id, modal = true }, new { data_target = "#modal-container", data_toggle = "modal" })
             </td>
         </tr>
     }
