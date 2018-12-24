@@ -52,9 +52,12 @@ namespace ErgasiaMVC.Controllers
             {
                 db.authors.Add(author);
                 db.SaveChanges();
+                TempData["message_css"] = "alert alert-success";
+                TempData["message"] = "Sucessful";
                 return RedirectToAction("Index");
             }
-
+            TempData["message_css"] = "alert alert-danger";
+            TempData["message"] = "Invalid input";
             return View(author);
         }
 
@@ -84,8 +87,12 @@ namespace ErgasiaMVC.Controllers
             {
                 db.Entry(author).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["message_css"] = "alert alert-success";
+                TempData["message"] = "Sucessful";
                 return RedirectToAction("Index");
             }
+            TempData["message_css"] = "alert alert-danger";
+            TempData["message"] = "Invalid input";
             return View(author);
         }
 
@@ -107,11 +114,14 @@ namespace ErgasiaMVC.Controllers
         // POST: Authors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
+        public ActionResult DeleteConfirmed(string id) {
             author author = db.authors.Find(id);
+            foreach (var ta in db.titleauthors.Where(ta => ta.au_id == author.au_id).ToList())
+                db.titleauthors.Remove(ta);
             db.authors.Remove(author);
             db.SaveChanges();
+            TempData["message_css"] = "alert alert-info";
+            TempData["message"] = "Deleted";
             return RedirectToAction("Index");
         }
 

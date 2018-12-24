@@ -52,11 +52,14 @@ namespace ErgasiaMVC.Controllers
             {
                 db.sales.Add(sale);
                 db.SaveChanges();
+                TempData["message_css"] = "alert alert-success";
+                TempData["message"] = "Successful";
                 return RedirectToAction("Index");
             }
-
             ViewBag.stor_id = new SelectList(db.stores, "stor_id", "stor_name", sale.stor_id);
             ViewBag.title_id = new SelectList(db.titles, "title_id", "title1", sale.title_id);
+            TempData["message_css"] = "alert alert-danger";
+            TempData["message"] = "Invalid input";
             return View(sale);
         }
 
@@ -86,10 +89,14 @@ namespace ErgasiaMVC.Controllers
             {
                 db.Entry(sale).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["message_css"] = "alert alert-success";
+                TempData["message"] = "Successful";
                 return RedirectToAction("Index");
             }
             ViewBag.stor_id = new SelectList(db.stores, "stor_id", "stor_name", sale.stor_id);
             ViewBag.title_id = new SelectList(db.titles, "title_id", "title1", sale.title_id);
+            TempData["message_css"] = "alert alert-danger";
+            TempData["message"] = "Invalid input";
             return View(sale);
         }
 
@@ -113,6 +120,8 @@ namespace ErgasiaMVC.Controllers
             sale sale = db.sales.Find(store_id, ord_num, title_id);
             db.sales.Remove(sale);
             db.SaveChanges();
+            TempData["message_css"] = "alert alert-info";
+            TempData["message"] = "Deleted";
             return RedirectToAction("Index");
         }
 

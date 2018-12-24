@@ -52,9 +52,12 @@ namespace ErgasiaMVC.Controllers
             {
                 db.jobs.Add(job);
                 db.SaveChanges();
+                TempData["message_css"] = "alert alert-success";
+                TempData["message"] = "Successful";
                 return RedirectToAction("Index");
             }
-
+            TempData["message_css"] = "alert alert-danger";
+            TempData["message"] = "Invalid input";
             return View(job);
         }
 
@@ -84,8 +87,12 @@ namespace ErgasiaMVC.Controllers
             {
                 db.Entry(job).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["message_css"] = "alert alert-success";
+                TempData["message"] = "Successful";
                 return RedirectToAction("Index");
             }
+            TempData["message_css"] = "alert alert-danger";
+            TempData["message"] = "Invalid input";
             return View(job);
         }
 
@@ -112,6 +119,8 @@ namespace ErgasiaMVC.Controllers
             job job = db.jobs.Find(id);
             db.jobs.Remove(job);
             db.SaveChanges();
+            TempData["message_css"] = "alert alert-info";
+            TempData["message"] = "Deleted";
             return RedirectToAction("Index");
         }
 

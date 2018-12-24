@@ -52,9 +52,12 @@ namespace ErgasiaMVC.Controllers
             {
                 db.stores.Add(store);
                 db.SaveChanges();
+                TempData["message_css"] = "alert alert-success";
+                TempData["message"] = "Successful";
                 return RedirectToAction("Index");
             }
-
+            TempData["message_css"] = "alert alert-danger";
+            TempData["message"] = "Invalid input";
             return View(store);
         }
 
@@ -84,8 +87,12 @@ namespace ErgasiaMVC.Controllers
             {
                 db.Entry(store).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["message_css"] = "alert alert-successful";
+                TempData["message"] = "Successful";
                 return RedirectToAction("Index");
             }
+            TempData["message_css"] = "alert alert-danger";
+            TempData["message"] = "Invalid input";
             return View(store);
         }
 
@@ -112,6 +119,8 @@ namespace ErgasiaMVC.Controllers
             store store = db.stores.Find(id);
             db.stores.Remove(store);
             db.SaveChanges();
+            TempData["message_css"] = "alert alert-info";
+            TempData["message"] = "Deleted";
             return RedirectToAction("Index");
         }
 

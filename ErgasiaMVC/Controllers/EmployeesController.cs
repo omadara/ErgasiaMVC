@@ -55,11 +55,15 @@ namespace ErgasiaMVC.Controllers
             {
                 db.employees.Add(employee);
                 db.SaveChanges();
+                TempData["message_css"] = "alert alert-success";
+                TempData["message"] = "Successful";
                 return RedirectToAction("Index");
             }
 
             ViewBag.job_id = new SelectList(db.jobs, "job_id", "job_desc", employee.job_id);
             ViewBag.pub_id = new SelectList(db.publishers, "pub_id", "pub_name", employee.pub_id);
+            TempData["message_css"] = "alert alert-danger";
+            TempData["message"] = "Invalid input";
             return View(employee);
         }
 
@@ -91,10 +95,14 @@ namespace ErgasiaMVC.Controllers
             {
                 db.Entry(employee).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["message_css"] = "alert alert-success";
+                TempData["message"] = "Successful";
                 return RedirectToAction("Index");
             }
             ViewBag.job_id = new SelectList(db.jobs, "job_id", "job_desc", employee.job_id);
             ViewBag.pub_id = new SelectList(db.publishers, "pub_id", "pub_name", employee.pub_id);
+            TempData["message_css"] = "alert alert-danger";
+            TempData["message"] = "Invalid input";
             return View(employee);
         }
 
@@ -121,6 +129,8 @@ namespace ErgasiaMVC.Controllers
             employee employee = db.employees.Find(id);
             db.employees.Remove(employee);
             db.SaveChanges();
+            TempData["message_css"] = "alert alert-info";
+            TempData["message"] = "Deleted";
             return RedirectToAction("Index");
         }
 

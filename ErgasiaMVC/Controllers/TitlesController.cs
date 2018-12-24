@@ -60,11 +60,15 @@ namespace ErgasiaMVC.Controllers
                 }
                 db.titles.Add(title);
                 db.SaveChanges();
+                TempData["message_css"] = "alert alert-success";
+                TempData["message"] = "Successful";
                 return RedirectToAction("Index");
             }
 
             ViewBag.pub_id = new SelectList(db.publishers, "pub_id", "pub_name", title.pub_id);
             ViewBag.author_ids = new MultiSelectList(db.authors.Select(a => new { id = a.au_id, au_fulname = a.au_lname + " " + a.au_fname }), "id", "au_fulname");
+            TempData["message_css"] = "alert alert-danger";
+            TempData["message"] = "Invalid input";
             return View(title);
         }
 
@@ -102,10 +106,14 @@ namespace ErgasiaMVC.Controllers
                 }
                 db.Entry(title).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["message_css"] = "alert alert-success";
+                TempData["message"] = "Successful";
                 return RedirectToAction("Index");
             }
             ViewBag.pub_id = new SelectList(db.publishers, "pub_id", "pub_name", title.pub_id);
             ViewBag.author_ids = new MultiSelectList(db.authors.Select(a => new { id = a.au_id, au_fulname = a.au_lname + " " + a.au_fname }), "id", "au_fulname");
+            TempData["message_css"] = "alert alert-danger";
+            TempData["message"] = "Invalid input";
             return View(title);
         }
 
@@ -130,8 +138,12 @@ namespace ErgasiaMVC.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             title title = db.titles.Find(id);
+            foreach (var ta in db.titleauthors.Where(ta => ta.title_id == title.title_id).ToList())
+                db.titleauthors.Remove(ta);
             db.titles.Remove(title);
             db.SaveChanges();
+            TempData["message_css"] = "alert alert-info";
+            TempData["message"] = "Deleted";
             return RedirectToAction("Index");
         }
 

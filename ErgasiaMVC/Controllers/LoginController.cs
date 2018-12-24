@@ -21,10 +21,14 @@ namespace ErgasiaMVC.Controllers
         public ActionResult LoginPost(string username, string password) {
             if (username == "admin" && password == "pass") {
                 Session["is_admin"] = true;
+                TempData["message_css"] = "alert alert-success";
+                TempData["message"] = "Welcome Admin";
                 RouteValueDictionary redirectUrl = (RouteValueDictionary)Session["redirect_url"];
                 if(redirectUrl!=null) return RedirectToAction(redirectUrl["action"].ToString(), redirectUrl["controller"].ToString());
                 else return RedirectToAction("Index", "Home");
             }
+            TempData["message_css"] = "alert alert-danger";
+            TempData["message"] = "Incorrect username or password";
             return View("Index");
         }
 

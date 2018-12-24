@@ -54,10 +54,13 @@ namespace ErgasiaMVC.Controllers
             {
                 db.publishers.Add(publisher);
                 db.SaveChanges();
+                TempData["message_css"] = "alert alert-success";
+                TempData["message"] = "Successful";
                 return RedirectToAction("Index");
             }
-
             ViewBag.pub_id = new SelectList(db.pub_info, "pub_id", "pr_info", publisher.pub_id);
+            TempData["message_css"] = "alert alert-danger";
+            TempData["message"] = "Invalid input";
             return View(publisher);
         }
 
@@ -88,9 +91,13 @@ namespace ErgasiaMVC.Controllers
             {
                 db.Entry(publisher).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["message_css"] = "alert alert-success";
+                TempData["message"] = "Successful";
                 return RedirectToAction("Index");
             }
             ViewBag.pub_id = new SelectList(db.pub_info, "pub_id", "pr_info", publisher.pub_id);
+            TempData["message_css"] = "alert alert-danger";
+            TempData["message"] = "Invalid input";
             return View(publisher);
         }
 
@@ -117,6 +124,8 @@ namespace ErgasiaMVC.Controllers
             publisher publisher = db.publishers.Find(id);
             db.publishers.Remove(publisher);
             db.SaveChanges();
+            TempData["message_css"] = "alert alert-info";
+            TempData["message"] = "Deleted";
             return RedirectToAction("Index");
         }
 

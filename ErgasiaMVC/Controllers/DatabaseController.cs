@@ -13,8 +13,11 @@ namespace ErgasiaMVC.Controllers
     public class DatabaseController : Controller
     {
         public ActionResult Index() {
-            if (LoginController.shouldRedirectToLogin(this))
+            if (LoginController.shouldRedirectToLogin(this)) {
+                TempData["message_css"] = "alert alert-info";
+                TempData["message"] = "You need to login first";
                 return RedirectToAction("Index", "Login");
+            }
             return View();
         }
 
@@ -62,11 +65,12 @@ namespace ErgasiaMVC.Controllers
                 sqlCmd.ExecuteNonQuery();
                 sqlCon.Close();
 
-                ViewBag.message = "Successful";
-                ViewBag.cssClass = "alert alert-success";
-            }else {
-                ViewBag.message = "Invalid file";
-                ViewBag.cssClass = "alert alert-danger";
+                TempData["message_css"] = "alert alert-success";
+                TempData["message"] = "Sucessful";
+            }
+            else {
+                TempData["message_css"] = "alert alert-danger";
+                TempData["message"] = "Invalid file";
             }
             return View("Index");
         }

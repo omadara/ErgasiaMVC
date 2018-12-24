@@ -16,7 +16,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="@Url.Action("Index","Home")" class="navbar-brand"><span class="glyphicon glyphicon-book"></span> Book Store</a>
+                <a href="@Url.Action("Index", "Home")" class="navbar-brand"><span class="glyphicon glyphicon-book"></span> Book Store</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -55,6 +55,11 @@
         </div>
     </div>
     <div class="container body-content">
+        
+        @if (TempData["message"] != null){
+            <div class="@TempData["message_css"]">@TempData["message"]</div>
+        }
+
         @RenderBody()
         <hr />
         <footer>
